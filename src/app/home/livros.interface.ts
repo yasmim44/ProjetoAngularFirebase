@@ -12,6 +12,12 @@ export interface Editora {
     email: string;
 }
 
+export interface IProduto {
+  nome: string;
+  quantidade: string;
+  marca: string;
+}
+
 export interface Livro {
     isbn: string; 
     titulo: string; 

@@ -1,0 +1,74 @@
+/* Fundo geral */
+ion-content {
+  --background: linear-gradient(180deg, #ffe4f2, #ffc1e3);
+  padding: 16px;
+}
+
+/* Tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #ff4da6, #cc2b8a);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Cabeçalho */
+th {
+  background: #b3005f;
+  color: white;
+  padding: 12px;
+  text-align: left;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+/* Linhas */
+td {
+  padding: 10px;
+  background: #fff0f7;
+  color: #4a004d;
+  font-size: 14px;
+}
+
+/* Zebra (linhas alternadas) */
+tr:nth-child(even) td {
+  background: #ffd6eb;
+}
+
+/* Hover nas linhas */
+tr:hover td {
+  background: #ffb3d9;
+  transition: 0.3s;
+}
+
+/* Categorias */
+ion-label {
+  background: #ff66b2;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+/* Botões */
+ion-button {
+  --background: #ff3399;
+  --background-hover: #e60073;
+  --color: white;
+  margin-right: 5px;
+}
+
+/* Botão delete */
+ion-button:last-child {
+  --background: #ff1a75;
+  --background-hover: #cc0052;
+}
+
+/* Ícones */
+ion-icon {
+  font-size: 18px;
+}

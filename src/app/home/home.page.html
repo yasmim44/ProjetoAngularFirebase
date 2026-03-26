@@ -1,13 +1,43 @@
 <ion-content [fullscreen]="true">
 
-    <ng-container *ngFor="let livro of this.livros">
-        <h1>{{ livro.titulo }}</h1>
-        <p>{{ livro.sinopse }}</p>
-        <ng-container *ngFor="let categoria of this.livro.categoria"
-          <marquee>{{categoria.nome}}</marquee>
-        </ng-container>
+    <table Border="1">
+        <tr>
+            <th>ISBN</th>
+            <th>Titulo</th>
+            <th>Categoria</th>
+            <th>Açoes</th>
+        </tr>
 
-    </ng-container>
+            <ng-container *ngFor="let livro of this.livros">
+                <tr>
+                    <td>{{livro.isbn}}</td>
+                    <td>{{livro.titulo}}</td>
+                    <td>
+                        <ng-container *ngFor="let cat of livro.categoria">
+                            <ion-label>{{cat.nome}}</ion-label>
+                            <br>
+                        </ng-container>
+                    </td>
+                    <td>
+                        <ion-button>
+                            <ion-icon name="create-outline"></ion-icon>
+                        </ion-button>
+                        <ion-button>
+                            <ion-icon name="trash-outline"></ion-icon>
+                        </ion-button>
+                    </td>
+                </tr>
     
+            </ng-container>
+    </table>
+
+    <table border="1">
+        <tr>
+            <td>Nome</td>
+            <td>Quantidade</td>
+            <td>Marca</td>
+        </tr>
+
+    </table>
     
 </ion-content>

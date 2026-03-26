@@ -4,169 +4,176 @@ import { CrudService } from '../services/crud.service';
 import { Storage, getDownloadURL, ref, uploadBytesResumable } from '@angular/fire/storage';
 import { MessageService } from '../services/message.service';
 import { Router } from '@angular/router';
-import { Livro } from './livros.interface';
+import { ILivro } from './acervo.interface';
+import { IProduto } from './livros.interface';
+
 
 @Component({
   selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
-})
-export class HomePage {
-livros: Livro[] = [
-  {
-    isbn: '123',
-    titulo: 'Manifesto do partido Comunista',
-    sinopse: 'um livro que te elea de nivel',
-    data_lancamento: '26/02/2009',
-    paginas: '209',
-    autor: [
-      {nome: 'Yasmim Marx', email: 'yasmimmarx@gmail.com'}
-    ],
-    categorias: [
-      {nome: 'romance'}
-    ],
-    editora: {nome: 'bombomproducoes', email:'bombom@hotmail.com'}
-  },
-  {
-    isbn: '124',
-    titulo: 'O Código Perdido',
-    sinopse: 'uma jornada cheia de mistérios e descobertas',
-    data_lancamento: '10/01/2015',
-    paginas: '320',
-    autor: [
-      {nome: 'Carlos Silva', email: 'carlos@gmail.com'}
-    ],
-    categorias: [
-      {nome: 'suspense'}
-    ],
-    editora: {nome: 'editora alfa', email:'alfa@gmail.com'}
-  },
-  {
-    isbn: '125',
-    titulo: 'Amor em Paris',
-    sinopse: 'uma história romântica na cidade luz',
-    data_lancamento: '14/02/2018',
-    paginas: '250',
-    autor: [
-      {nome: 'Ana Souza', email: 'ana@gmail.com'}
-    ],
-    categorias: [
-      {nome: 'romance'}
-    ],
-    editora: {nome: 'editora beta', email:'beta@gmail.com'}
-  },
-  {
-    isbn: '126',
-    titulo: 'A Última Batalha',
-    sinopse: 'conflitos épicos em um mundo fantástico',
-    data_lancamento: '20/07/2020',
-    paginas: '410',
-    autor: [
-      {nome: 'Pedro Lima', email: 'pedro@gmail.com'}
-    ],
-    categorias: [
-      {nome: 'fantasia'}
-    ],
-    editora: {nome: 'editora gama', email:'gama@gmail.com'}
-  },
-  {
-    isbn: '127',
-    titulo: 'Segredos do Oceano',
-    sinopse: 'aventuras profundas e misteriosas',
-    data_lancamento: '05/06/2017',
-    paginas: '290',
-    autor: [
-      {nome: 'Marina Costa', email: 'marina@gmail.com'}
-    ],
-    categorias: [
-      {nome: 'aventura'}
-    ],
-    editora: {nome: 'editora delta', email:'delta@gmail.com'}
-  },
-  {
-    isbn: '128',
-    titulo: 'Tecnologia do Futuro',
-    sinopse: 'uma visão sobre o avanço tecnológico',
-    data_lancamento: '11/11/2021',
-    paginas: '180',
-    autor: [
-      {nome: 'Lucas Rocha', email: 'lucas@gmail.com'}
-    ],
-    categorias: [
-      {nome: 'tecnologia'}
-    ],
-    editora: {nome: 'editora tech', email:'tech@gmail.com'}
-  },
-  {
-    isbn: '129',
-    titulo: 'Mistérios da Mente',
-    sinopse: 'explorando o funcionamento do cérebro humano',
-    data_lancamento: '03/03/2016',
-    paginas: '300',
-    autor: [
-      {nome: 'Fernanda Alves', email: 'fernanda@gmail.com'}
-    ],
-    categorias: [
-      {nome: 'psicologia'}
-    ],
-    editora: {nome: 'editora mente', email:'mente@gmail.com'}
-  },
-  {
-    isbn: '130',
-    titulo: 'Histórias do Brasil',
-    sinopse: 'relatos marcantes da história brasileira',
-    data_lancamento: '22/04/2010',
-    paginas: '350',
-    autor: [
-      {nome: 'João Pereira', email: 'joao@gmail.com'}
-    ],
-    categorias: [
-      {nome: 'historia'}
-    ],
-    editora: {nome: 'editora brasil', email:'brasil@gmail.com'}
-  },
-  {
-    isbn: '131',
-    titulo: 'Culinária Fácil',
-    sinopse: 'receitas simples e deliciosas',
-    data_lancamento: '09/09/2019',
-    paginas: '150',
-    autor: [
-      {nome: 'Paula Mendes', email: 'paula@gmail.com'}
-    ],
-    categorias: [
-      {nome: 'gastronomia'}
-    ],
-    editora: {nome: 'editora sabor', email:'sabor@gmail.com'}
-  },
-  {
-    isbn: '132',
-    titulo: 'Viagem pelo Mundo',
-    sinopse: 'experiências incríveis em diversos países',
-    data_lancamento: '18/12/2014',
-    paginas: '275',
-    autor: [
-      {nome: 'Rafael Torres', email: 'rafael@gmail.com'}
-    ],
-    categorias: [
-      {nome: 'turismo'}
-    ],
-    editora: {nome: 'editora viagem', email:'viagem@gmail.com'}
-  },
-  {
-    isbn: '133',
-    titulo: 'O Poder do Hábito',
-    sinopse: 'como hábitos moldam nossa vida',
-    data_lancamento: '01/05/2013',
-    paginas: '240',
-    autor: [
-      {nome: 'Bruno Castro', email: 'bruno@gmail.com'}
-    ],
-    categorias: [
-      {nome: 'autoajuda'}
-    ],
-    editora: {nome: 'editora vida', email:'vida@gmail.com'}
-  }
-]
-}
+    templateUrl: 'home.page.html',
+      styleUrls: ['home.page.scss'],
+      })
+      export class HomePage {
 
+      produtos: IProduto[] = [
+        {
+            nome: "delineador",
+                quantidade: "1",
+                    marca: "marimaria"
+                      },
+                        {
+                            nome: "base liquida",
+                                quantidade: "2",
+                                    marca: "maybelline"
+                                      },
+                                        {
+                                            nome: "batom matte",
+                                                quantidade: "3",
+                                                    marca: "mac"
+                                                      },
+                                                        {
+                                                            nome: "rimel",
+                                                                quantidade: "1",
+                                                                    marca: "loreal"
+                                                                      },
+                                                                        {
+                                                                            nome: "corretivo",
+                                                                                quantidade: "2",
+                                                                                    marca: "ruby rose"
+                                                                                      },
+                                                                                        {
+                                                                                            nome: "po compacto",
+                                                                                                quantidade: "1",
+                                                                                                    marca: "vult"
+                                                                                                      },
+                                                                                                        {
+                                                                                                            nome: "blush",
+                                                                                                                quantidade: "2",
+                                                                                                                    marca: "dailus"
+                                                                                                                      },
+                                                                                                                        {
+                                                                                                                            nome: "iluminador",
+                                                                                                                                quantidade: "1",
+                                                                                                                                    marca: "quem disse berenice"
+                                                                                                                                      },
+                                                                                                                                        {
+                                                                                                                                            nome: "primer facial",
+                                                                                                                                                quantidade: "1",
+                                                                                                                                                    marca: "tracta"
+                                                                                                                                                      },
+                                                                                                                                                        {
+                                                                                                                                                            nome: "paleta de sombras",
+                                                                                                                                                                quantidade: "1",
+                                                                                                                                                                    marca: "anastasia"
+                                                                                                                                                                      },
+                                                                                                                                                                        {
+                                                                                                                                                                            nome: "lapis de olho",
+                                                                                                                                                                                quantidade: "4",
+                                                                                                                                                                                    marca: "avon"
+                                                                                                                                                                                      },
+                                                                                                                                                                                        {
+                                                                                                                                                                                            nome: "gloss labial",
+                                                                                                                                                                                                quantidade: "2",
+                                                                                                                                                                                                    marca: "fenty beauty"
+                                                                                                                                                                                                      },
+                                                                                                                                                                                                        {
+                                                                                                                                                                                                            nome: "fixador de maquiagem",
+                                                                                                                                                                                                                quantidade: "1",
+                                                                                                                                                                                                                    marca: "nina secrets"
+                                                                                                                                                                                                                      },
+                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                            nome: "hidratante facial",
+                                                                                                                                                                                                                                quantidade: "3",
+                                                                                                                                                                                                                                    marca: "neutrogena"
+                                                                                                                                                                                                                                      },
+                                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                                            nome: "esponja de maquiagem",
+                                                                                                                                                                                                                                                quantidade: "5",
+                                                                                                                                                                                                                                                    marca: "real techniques"
+                                                                                                                                                                                                                                                      },
+                                                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                                                            nome: "pincel de base",
+                                                                                                                                                                                                                                                                quantidade: "2",
+                                                                                                                                                                                                                                                                    marca: "macrilan"
+                                                                                                                                                                                                                                                                      },
+                                                                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                                                                            nome: "pincel de blush",
+                                                                                                                                                                                                                                                                                quantidade: "2",
+                                                                                                                                                                                                                                                                                    marca: "belliz"
+                                                                                                                                                                                                                                                                                      },
+                                                                                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                                                                                            nome: "demaquilante",
+                                                                                                                                                                                                                                                                                                quantidade: "1",
+                                                                                                                                                                                                                                                                                                    marca: "bioderma"
+                                                                                                                                                                                                                                                                                                      },
+                                                                                                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                                                                                                            nome: "agua micelar",
+                                                                                                                                                                                                                                                                                                                quantidade: "2",
+                                                                                                                                                                                                                                                                                                                    marca: "garnier"
+                                                                                                                                                                                                                                                                                                                      },
+                                                                                                                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                                                                                                                            nome: "protetor solar facial",
+                                                                                                                                                                                                                                                                                                                                quantidade: "1",
+                                                                                                                                                                                                                                                                                                                                    marca: "la roche posay"
+                                                                                                                                                                                                                                                                                                                                      },
+                                                                                                                                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                                                                                                                                            nome: "lip balm",
+                                                                                                                                                                                                                                                                                                                                                quantidade: "3",
+                                                                                                                                                                                                                                                                                                                                                    marca: "nivea"
+                                                                                                                                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                                                                                                                                      ];
+
+                                                                                                                                                                                                                                                                                                                                                      livros: ILivro[] = [
+                                                                                                                                                                                                                                                                                                                                                        { 
+                                                                                                                                                                                                                                                                                                                                                            isbn: "123", 
+                                                                                                                                                                                                                                                                                                                                                                titulo: "uma breve historia do tempo",
+                                                                                                                                                                                                                                                                                                                                                                    categoria: [
+                                                                                                                                                                                                                                                                                                                                                                          {nome: "cientifico"},
+                                                                                                                                                                                                                                                                                                                                                                                {nome: "romance"},
+                                                                                                                                                                                                                                                                                                                                                                                      {nome: "terror"}
+                                                                                                                                                                                                                                                                                                                                                                                          ]
+                                                                                                                                                                                                                                                                                                                                                                                            },
+                                                                                                                                                                                                                                                                                                                                                                                              {
+                                                                                                                                                                                                                                                                                                                                                                                                  isbn: "124",
+                                                                                                                                                                                                                                                                                                                                                                                                      titulo: "dom casmurro",
+                                                                                                                                                                                                                                                                                                                                                                                                          categoria: [{nome: "romance"}]
+                                                                                                                                                                                                                                                                                                                                                                                                            },
+                                                                                                                                                                                                                                                                                                                                                                                                              {
+                                                                                                                                                                                                                                                                                                                                                                                                                  isbn: "125",
+                                                                                                                                                                                                                                                                                                                                                                                                                      titulo: "o pequeno principe",
+                                                                                                                                                                                                                                                                                                                                                                                                                          categoria: [{nome: "infantil"}, {nome: "fantasia"}]
+                                                                                                                                                                                                                                                                                                                                                                                                                            },
+                                                                                                                                                                                                                                                                                                                                                                                                                              {
+                                                                                                                                                                                                                                                                                                                                                                                                                                  isbn: "126",
+                                                                                                                                                                                                                                                                                                                                                                                                                                      titulo: "1984",
+                                                                                                                                                                                                                                                                                                                                                                                                                                          categoria: [{nome: "ficcao"}, {nome: "distopia"}]
+                                                                                                                                                                                                                                                                                                                                                                                                                                            },
+                                                                                                                                                                                                                                                                                                                                                                                                                                              {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                  isbn: "127",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                      titulo: "a revolucao dos bichos",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                          categoria: [{nome: "politico"}, {nome: "satira"}]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            },
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                  isbn: "128",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                      titulo: "o senhor dos aneis",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                          categoria: [{nome: "fantasia"}]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            },
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                              {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  isbn: "129",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      titulo: "harry potter e a pedra filosofal",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          categoria: [{nome: "fantasia"}, {nome: "aventura"}]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            },
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  isbn: "130",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      titulo: "o codigo da vinci",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          categoria: [{nome: "suspense"}, {nome: "misterio"}]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            },
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  isbn: "131",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      titulo: "anjos e demonios",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          categoria: [{nome: "suspense"}]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            },
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  isbn: "132",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      titulo: "it a coisa",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          categoria:
